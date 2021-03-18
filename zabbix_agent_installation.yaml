@@ -1,0 +1,27 @@
+---
+- name: Install Zabbix Agent
+  hosts: agents
+  become: yes
+  tasks:
+  - name: download zabbix package
+    shell: wget https://repo.zabbix.com/zabbix/5.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_5.2-1+ubuntu20.04_all.deb
+
+  - name: extract zabbix package
+    shell: dpkg -i zabbix-release_5.2-1+ubuntu20.04_all.deb
+
+  - name: Install Agent
+    apt:
+      name: zabbix-agent
+      state: present
+      update_cache: yes
+
+  - name: updating agent configuration file
+    copy:
+      src: zabbix_agentd.conf
+      dest: /etc/zabbix/zabbix_agentd.conf
+
+  - name: restart zabbix agent
+    service:
+      name: zabbix-agent
+      state: restarted
+      enabled: yes
