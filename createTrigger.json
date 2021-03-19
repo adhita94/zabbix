@@ -1,0 +1,85 @@
+{
+    "jsonrpc": "2.0",
+    "method": "action.create",
+    "params": {
+        "name": "Trigger action",
+        "eventsource": 0,
+        "status": 0,
+        "esc_period": "2m",
+        "filter": {
+            "evaltype": 0,
+            "conditions": [
+                {
+                    "conditiontype": 1,
+                    "operator": 0,
+                    "value": "10084"
+                },
+                {
+                    "conditiontype": 3,
+                    "operator": 2,
+                    "value": "memory"
+                }
+            ]
+        },
+        "operations": [
+            {
+                "operationtype": 0,
+                "esc_period": "0s",
+                "esc_step_from": 1,
+                "esc_step_to": 2,
+                "evaltype": 0,
+                "opmessage_grp": [
+                    {
+                        "usrgrpid": "7"
+                    }
+                ],
+                "opmessage": {
+                    "default_msg": 1,
+                    "mediatypeid": "1"
+                }
+            },
+            {
+                "operationtype": 1,
+                "esc_step_from": 3,
+                "esc_step_to": 4,
+                "evaltype": 0,
+                "opconditions": [
+                    {
+                        "conditiontype": 14,
+                        "operator": 0,
+                        "value": "0"
+                    }
+                ],
+                "opcommand_grp": [
+                    {
+                        "groupid": "2"
+                    }
+                ],
+                "opcommand": {
+                    "type": 4,
+                    "scriptid": "3"
+                }
+            }
+        ],
+        "recovery_operations": [
+            {
+                "operationtype": "11",
+                "opmessage": {
+                    "default_msg": 1
+                }
+            }    
+        ],
+        "acknowledge_operations": [
+            {
+                "operationtype": "12",
+                "opmessage": {
+                    "default_msg": 0,
+                    "message": "Custom update operation message body",
+                    "subject": "Custom update operation message subject"
+                }
+            }
+        ]
+    },
+    "auth": "0dda8e26f36531762005e7d7e9220848",
+    "id": 1
+}
